@@ -5,13 +5,26 @@
               const birthValid = document.getElementById("birthdate");
                
                 alert(birthValid.value);
-                alert(isValidDate(new Date(birthValid.value))) ;
+                alert(CalculAge(birthValid.value));
+                alert(isValidDate(CalculAge(birthValid.value))) ;
             }
-            function isValidDate(day)  {
-            const todayDate = new Date(); //today date
-            const date = new Date().setFullYear(todayDate.getFullYear()-18); //just for adults
-            const oldDate = new Date().setFullYear(todayDate.getFullYear()-100); //100 in the past
-              if (day<=date && day>oldDate)
+            function CalculAge (birthDate) {
+            birthDate = new Date(birthDate);
+            today = new Date();
+
+            var years = (today.getFullYear() - birthDate.getFullYear());
+
+            if (today.getMonth() < birthDate.getMonth() ||
+            today.getMonth() == birthDate.getMonth() && today.getDate() < birthDate.getDate()) {
+            years--;
+            }
+
+            return years;
+}
+           
+            function isValidDate(year)  {
+
+              if (year<=100 && year>17)
                 {return true}
               else
               {return false}
