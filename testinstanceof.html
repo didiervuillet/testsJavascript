@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script>
+            function speak() {
+              const birthValid = document.getElementById("birthdate");
+               
+                alert(birthValid.value);
+                alert(isValidDate(new Date(birthValid.value))) ;
+            }
+            function isValidDate(day)  {
+            const todayDate = new Date(); //today date
+            const date = new Date().setFullYear(todayDate.getFullYear()-18); //just for adults
+            const oldDate = new Date().setFullYear(todayDate.getFullYear()-100); //100 in the past
+              if (day<=date && day>oldDate)
+                {return true}
+              else
+              {return false}
+            // return day instanceof Date && !isNaN(day) && day<=date && day>oldDate ; 
+}
+        </script>
+    </head>
+    <body>
+        <div
+        class="formData">
+        <label for="birthdate">Date de naissance</label><br>
+        <input
+          class="text-control"
+          type="date"
+          id="birthdate"
+          name="birthdate" min="1920-01-01" 
+        /><br>
+        <small id="errorLabelBirth" class ="small">
+          Il est nécessaire d'entrer une date de naissance complète ou avoir 18 ans pour vous inscrire.
+        </small>
+      </div>
+      <button onclick="speak()">Click Me</button>
+    </body>
+</html>
