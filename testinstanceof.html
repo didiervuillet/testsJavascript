@@ -1,6 +1,9 @@
 <html>
     <head>
         <script>
+
+  // fonction d'appel des fonctions de calul d'age et de validation de l'age authorisé
+
             function speak() {
               const birthValid = document.getElementById("birthdate");
               var date = new Date(birthValid);
@@ -8,14 +11,21 @@
                 alert(getAge(birthValid.value));
                 alert(isValidDate(getAge(birthValid.value))) ;
             }
-          
-            function getAge(date){
-            d2 = new Date();
-            d1 = new Date(date);
-            var diff = d2.getTime() - d1.getTime();
+// fonctiion de calcul d'age à partir de la date de naissance
+// la fonction getTime donne le nombre de millisecondes depuis 1-1-1970
+// diff est le nombre de millisecondes vecues
+// ensuite on divise par  1000(pour passer en secondes, 60 ( pour passer en minutes)
+// 60 ( pour passer en heures), 24 (pour passer en jours), 365.25 (pour passer en années en prenant la moyenne sur 4 ans)
+// le résultat est l'age
+            function getAge(birthday){
+            today = new Date();
+            birthdaydate = new Date(birthday);
+            var diff = today.getTime() - birthdaydate.getTime();
             let age=Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-          return age;
-}
+             return age;
+            }
+
+// fonction pour voir si l'age est compris entre 18 (inclus) et 100 ans
             function isValidDate(age)  {
 
               if (age<=100 && age>17)
