@@ -3,28 +3,22 @@
         <script>
             function speak() {
               const birthValid = document.getElementById("birthdate");
-               
+              var date = new Date(birthValid);
                 alert(birthValid.value);
-                alert(CalculAge(birthValid.value));
-                alert(isValidDate(CalculAge(birthValid.value))) ;
+                alert(getAge(birthValid.value));
+                alert(isValidDate(getAge(birthValid.value))) ;
             }
-            function CalculAge (birthDate) {
-            birthDate = new Date(birthDate);
-            today = new Date();
-
-            var years = (today.getFullYear() - birthDate.getFullYear());
-
-            if (today.getMonth() < birthDate.getMonth() ||
-            today.getMonth() == birthDate.getMonth() && today.getDate() < birthDate.getDate()) {
-            years--;
-            }
-
-            return years;
+          
+            function getAge(date){
+            d2 = new Date();
+            d1 = new Date(date);
+            var diff = d2.getTime() - d1.getTime();
+            let age=Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+          return age;
 }
-           
-            function isValidDate(year)  {
+            function isValidDate(age)  {
 
-              if (year<=100 && year>17)
+              if (age<=100 && age>17)
                 {return true}
               else
               {return false}
